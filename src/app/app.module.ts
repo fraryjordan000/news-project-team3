@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HeadlinesComponent } from './headlines/headlines.component';
 import { SearchComponent } from './search/search.component';
 import { LikesComponent } from './likes/likes.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LikesComponent } from './likes/likes.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
