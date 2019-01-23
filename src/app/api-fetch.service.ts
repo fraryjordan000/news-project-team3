@@ -9,11 +9,16 @@ export class ApiFetchService {
 
   constructor(private http: HttpClient) {}
   
-  private topHeadlines: string = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=c3bb2f311334412fa4f71520d1f62e0e';
+  private searchStart: string = 'https://newsapi.org/v2/everything?q=';
+  private searchEnd: string = '&apiKey=c3bb2f311334412fa4f71520d1f62e0e';
 
-  getTopHeadlines(cb?: Function) {
+  search(str: string, cb?: Function) {
+    this.get(this.searchStart+str+this.searchEnd, cb);
+  }
+
+  get(url: string, cb?: Function) {
     let tmp: any;
-    this.http.get(this.topHeadlines).subscribe(
+    this.http.get(url).subscribe(
       function(res) {
         tmp = res;
         if(cb != undefined) {
@@ -23,4 +28,6 @@ export class ApiFetchService {
     );
     return tmp;
   }
+
+
 }
