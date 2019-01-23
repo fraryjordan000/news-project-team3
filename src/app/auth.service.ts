@@ -13,6 +13,7 @@ interface User {
   uid: string;
   email: string;
   displayName: string;
+  articles: any;
 }
 
 @Injectable({
@@ -53,7 +54,8 @@ export class AuthService {
     const data: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName
+      displayName: user.displayName,
+      articles: user.articles != undefined ? user.articles : []
     }
 
     return userRef.set(data)
