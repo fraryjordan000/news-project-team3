@@ -9,10 +9,13 @@ import { SearchComponent } from './search/search.component';
 import { LikesComponent } from './likes/likes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
+import { NavbarComponent } from './navbar/navbar.component';
+import {MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -29,15 +32,20 @@ import {
     LoginComponent,
     HeadlinesComponent,
     SearchComponent,
-    LikesComponent
+    LikesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment),
     AngularFireAuthModule,
+    AngularFirestoreModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule
     HttpClientModule,
     MatCardModule,
     MatButtonModule
