@@ -45,7 +45,7 @@ import {
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
     HttpClientModule,
     MatCardModule,
     MatButtonModule
