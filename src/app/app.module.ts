@@ -14,6 +14,11 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 
+import {
+  MatCardModule,
+  MatButtonModule
+} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,9 @@ import { environment } from 'src/environments/environment';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
