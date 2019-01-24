@@ -81,5 +81,14 @@ export class AuthService {
       articlesRef.set(data);
     });
   }
-  
+
+  getArticles(cb: Function) {
+    this.afAuth.authState.subscribe(user => {
+      const articlesRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+
+      articlesRef.get().subscribe(res => {
+        cb(res.data().articles);
+      });
+    });
+  }
 }
