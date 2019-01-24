@@ -41,10 +41,16 @@ export class AuthService {
     return this.oAuthLogin(provider);
   }
 
+  logOut() {
+    this.afAuth.auth.signOut();
+    return true;
+  }
+
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
+        this.router.navigate(['/headlines']);
       });
   }
 
