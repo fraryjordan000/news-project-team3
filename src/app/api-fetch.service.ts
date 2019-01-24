@@ -12,11 +12,18 @@ export class ApiFetchService {
   private searchStart: string = 'https://newsapi.org/v2/everything?q=';
   private searchEnd: string = '&apiKey=c3bb2f311334412fa4f71520d1f62e0e';
 
-  search(str: string, cb?: Function) {
+  private headlinesStart: string = 'https://newsapi.org/v2/top-headlines?category=';
+  private headlinesEnd: string = '&apiKey=c3bb2f311334412fa4f71520d1f62e0e';
+
+  search(str: string, cb: Function) {
     this.get(this.searchStart+str+this.searchEnd, cb);
   }
 
-  get(url: string, cb?: Function) {
+  topHeadlines(category: string, cb: Function) {
+    this.get(this.headlinesStart+category+this.headlinesEnd, cb);
+  }
+
+  private get(url: string, cb: Function) {
     let tmp: any;
     this.http.get(url).subscribe(
       function(res) {
