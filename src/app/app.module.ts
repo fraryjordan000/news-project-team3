@@ -14,10 +14,14 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 
+
+import { HttpClientModule } from '@angular/common/http';
+
 import {
   MatCardModule,
   MatButtonModule
 } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    HttpClientModule,
     MatCardModule,
     MatButtonModule
   ],
