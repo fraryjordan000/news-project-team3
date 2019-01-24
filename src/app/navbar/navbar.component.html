@@ -23,7 +23,7 @@
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
   <span class="padding-right" *ngIf="auth.user | async as user">Hello, {{ user.displayName }}</span>
-  <button mat-raised-button aria-label="Log out" color="accent">
+  <button mat-raised-button aria-label="Log out" color="accent" *ngIf="auth.user | async as user" (click)="logout()">
     Log out
   </button>
 </mat-toolbar>
