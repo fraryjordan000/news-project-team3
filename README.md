@@ -4,4 +4,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Notes
 
-* Functions to update/get currently logged in user's favorite articles is located in the AuthService
+* Functions to update/get currently logged in user's favorite articles are located in the AuthService
