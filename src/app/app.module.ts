@@ -39,7 +39,7 @@ import {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     MatToolbarModule,
