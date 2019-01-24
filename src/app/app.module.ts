@@ -17,6 +17,15 @@ import { environment } from 'src/environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
 
+
+import { HttpClientModule } from '@angular/common/http';
+
+import {
+  MatCardModule,
+  MatButtonModule
+} from '@angular/material';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +45,9 @@ import {MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    MatButtonModule
+    HttpClientModule,
+    MatCardModule,
     MatButtonModule
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
