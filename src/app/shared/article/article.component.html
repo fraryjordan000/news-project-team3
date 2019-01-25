@@ -2,24 +2,27 @@
 
   <!-- img -->
 
-  <ng-container *ngIf='true'>
+  <ng-container *ngIf='card.urlToImage'>
     <div class='img-container'>
-      <div class='img' style='background-image: url("https://media.pitchfork.com/photos/5c49d4dea8b1520c39cc9b4d/1:1/w_500/Better-Oblivion-Community-Center.jpg")'></div>
+      <img [src]="card.urlToImage">
     </div>
   </ng-container>
 
   <!-- info -->
 
   <div class='info-container'>
-    <h2>Better Oblivion Community Center Review - Pitchfork</h2>
-    <p>Phoebe Bridgers and Conor Oberst crave the existential soap opera of modern politics just like the rest of us.</p>
+    <h2><a [href]="card.url" target="_blank">{{card.title}}</a></h2>
+    <p>{{card.description}}</p>
   </div>
 
   <!-- actions -->
 
-  <button mat-icon-button class="heart">
-    <mat-icon color="accent">favorites</mat-icon>
-  </button>
+  <button *ngIf='!selected' mat-icon-button class="heart" (click)='clicked()'>
+  <mat-icon color="accent">favorites</mat-icon>
+</button>
+  <button *ngIf='selected' mat-icon-button class="heart" (click)='clicked()'>
+  <mat-icon color="primary">favorites</mat-icon>
+</button>
 
 
 </mat-card>
