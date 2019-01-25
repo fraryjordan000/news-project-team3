@@ -68,27 +68,39 @@ export class AuthService {
   }
 
   updateArticles(arr: any) {
+    let hasRun: boolean = false;
+
     this.afAuth.authState.subscribe(user => {
-      const articlesRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+      if(!hasRun) {
+        const articlesRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
-      const data: User = {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        articles: arr
-      }
+        const data: User = {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          articles: arr
+        }
 
-      articlesRef.set(data);
+        articlesRef.set(data);
+        }
+        hasRun = true;
     });
   }
 
   getArticles(cb: Function) {
-    this.afAuth.authState.subscribe(user => {
-      const articlesRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    let hasRun: boolean = false;
 
-      articlesRef.get().subscribe(res => {
-        cb(res.data().articles);
-      });
+    this.afAuth.authState.subscribe(user => {
+      if(!hasRun) {
+        const articlesRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+
+        articlesRef.get().subscribe(res => {
+          if(!hasRun) {
+            cb(res.data().articles);
+            hasRun = true;
+          }
+        });
+      }
     });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiFetchService } from '../api-fetch.service';
 
 
 @Component({
@@ -8,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  // In html, *ngFor="let card in cards" -- use card.title, card.description, card.url, and card.urlToImage
+  cards: any = [];
+
+  constructor(private fetch: ApiFetchService) { }
 
   ngOnInit() {
+  }
+
+  search(str: string) {
+    this.fetch.search(str, (res) => {
+      this.cards = res.articles;
+      console.log(res.articles);
+    });
   }
 
 }
