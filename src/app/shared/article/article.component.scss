@@ -1,5 +1,6 @@
 mat-card {
   padding: 24px;
+  margin: 5px 0;
   display: flex;
   margin-bottom: 14px;
 
@@ -7,10 +8,10 @@ mat-card {
 
 .img-container {
   min-height: 80px;
-
+  max-height: 100px;
 }
 
-.img {
+img {
   height: 100%;
   min-width: 80px;
   margin-right: 24px;
@@ -23,6 +24,16 @@ mat-card {
 
   }
 
+}
+
+a {
+  color: lightgrey;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: #aaa;
+  }
 }
 
 .info-container {
@@ -39,6 +50,9 @@ i {
   top: 24px;
   right: 24px;
 
+  &:hover {
+    color: tomato;
+  }
 }
 
 // type (maybe make global later)
@@ -58,4 +72,12 @@ p {
   font-size: 14px;
   opacity: .5;
 
+}
+
+.selected {
+  color: red;
+
+  &:hover {
+    color: black;
+  }
 }
