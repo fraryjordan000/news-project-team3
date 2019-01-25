@@ -18,6 +18,7 @@ export class ArticleComponent implements OnInit {
   }
 
   clicked() {
+
     this.selected = !this.selected;
   }
 

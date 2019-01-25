@@ -1,3 +1,5 @@
+@import "../../styles";
+
 .spacer {
   height: 50px;
 }
@@ -13,8 +15,35 @@
 }
 
 .searchBar {
-  width: 80%;
+  width: 90%;
   margin-right: 10px;
   margin-left: 20px;
+  @media screen and (max-width: 1400px) {
+    width: 85%;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 75%;
+  }
+  @media screen and (max-width: $mobile-large) {
+    margin: 0;
+    width: 100%;
+  }
+}
 
+button {
+  @media only screen and (max-width: $mobile-large) {
+    width: 50vw;
+    margin-left: 17vw;
+
+  }
+}
+
+.container {
+  margin: 5px 100px;
+  @media screen and (max-width: $desktop) {
+    margin: 5px 50px;
+  }
+  @media screen and (max-width: $mobile-large) {
+    margin: 5px;
+  }
 }

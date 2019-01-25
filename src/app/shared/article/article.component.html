@@ -17,7 +17,12 @@
 
   <!-- actions -->
 
-  <i *ngIf='!selected' class='far fa-heart' (click)='clicked()'></i>
-  <i *ngIf='selected' class='far fa-heart selected' (click)='clicked()'></i>
+  <button *ngIf='!selected' mat-icon-button class="heart" (click)='clicked()'>
+  <mat-icon color="accent">favorites</mat-icon>
+</button>
+  <button *ngIf='selected' mat-icon-button class="heart" (click)='clicked()'>
+  <mat-icon color="primary">favorites</mat-icon>
+</button>
+
 
 </mat-card>
