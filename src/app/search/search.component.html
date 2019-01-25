@@ -1,12 +1,14 @@
-<button mat-raised-button color="primary">Primary</button>
-<button mat-raised-button color="accent">accent</button>
-<button mat-raised-button color="warn">warning</button>
+<mat-card>
+  <div class="spacer">
 
-
-<button mat-flat-button color="primary">Primary</button>
-<button mat-flat-button color="accent">accent</button>
-<button mat-flat-button color="warn">warning</button>
-
-<button mat-fab></button>
-<button mat-mini-fab></button>
-
+  </div>
+  <h1 align="center" class="largeFont">
+    Search!
+  </h1>
+  <mat-form-field class="searchBar">
+    <input type="search" matInput placeholder="Search Newsies">
+  </mat-form-field>
+  <button type="submit" mat-flat-button color="primary">Search
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-card>
