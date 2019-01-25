@@ -15,7 +15,7 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
-import {MatIconModule, MatInputModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {MatIconModule, MatInputModule, MatMenuModule, MatToolbarModule, MatSelectModule, MatFormFieldModule} from '@angular/material';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -51,7 +51,9 @@ import { ArticleComponent } from './shared/article/article.component';
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
