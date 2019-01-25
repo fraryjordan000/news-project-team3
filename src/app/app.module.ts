@@ -24,6 +24,7 @@ import {
   MatCardModule,
   MatButtonModule
 } from '@angular/material';
+import { ArticleComponent } from './shared/article/article.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {
     HeadlinesComponent,
     SearchComponent,
     LikesComponent,
-    NavbarComponent
+    NavbarComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
