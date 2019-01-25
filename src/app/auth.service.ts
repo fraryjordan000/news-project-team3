@@ -8,6 +8,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { calcBindingFlags } from '@angular/core/src/view/util';
 
 interface User {
   uid: string;
@@ -82,8 +83,9 @@ export class AuthService {
         }
 
         articlesRef.set(data);
-        }
+        this.updateOverall(arr);
         hasRun = true;
+      }
     });
   }
 
@@ -100,6 +102,30 @@ export class AuthService {
             hasRun = true;
           }
         });
+      }
+    });
+  }
+
+  private updateOverall(arr: any) {
+    let hasRun: boolean = false;
+
+    this.afAuth.authState.subscribe(() => {
+      if(!hasRun) {
+        for(let a in arr) {
+          const overallRef: AngularFirestoreDocument<any> = this.afs.doc(`overall/${arr[a].url}`);
+
+          let tmp;
+          overallRef.get().subscribe(res => {
+            tmp = (res.data().likes != undefined) ? res.data().likes : 0;
+          })
+
+          let data = {
+            likes: tmp + 1
+          }
+
+          overallRef.set(data);
+        }
+        hasRun = true;
       }
     });
   }
