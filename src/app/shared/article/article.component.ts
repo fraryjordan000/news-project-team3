@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleComponent implements OnInit {
 
-  constructor() { }
+  private heart: boolean;
+
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
 
+  toggleColor() {
+
+  }
 }

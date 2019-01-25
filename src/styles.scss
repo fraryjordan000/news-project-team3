@@ -21,6 +21,11 @@ $news-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $news-app-theme: mat-dark-theme($news-app-primary, $news-app-accent, $news-app-warn);
+$desktop: 960px;
+$tablet: 768px;
+$mobile-large: 640px;
+$mobile: 480px;
+$mobile-small: 300px;
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -28,7 +33,10 @@ $news-app-theme: mat-dark-theme($news-app-primary, $news-app-accent, $news-app-w
 @include angular-material-theme($news-app-theme);
 
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  width: 100%;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 h1 {
   margin: 0 0 16px 0;
@@ -39,5 +47,6 @@ h1 {
   }
 
 }
+
 
 
