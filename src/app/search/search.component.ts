@@ -18,18 +18,22 @@ export class SearchComponent implements OnInit {
     urlToImage: this.sanitizer.bypassSecurityTrustUrl("https://media.pitchfork.com/photos/5c49d4dea8b1520c39cc9b4d/1:1/w_500/Better-Oblivion-Community-Center.jpg"),
     title: "Better oblivion review",
     description: "like a soap opera of modern politics"
-  }
+  };
+
+  query: string = '';
 
   constructor(private fetch: ApiFetchService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }
 
+// TODO:figure out what is causing search to error
   search(str: string) {
     this.fetch.search(str, (res) => {
       this.cards = res.articles;
       console.log(res.articles);
     });
   }
+
 
 }
