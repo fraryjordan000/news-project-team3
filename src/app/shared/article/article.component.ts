@@ -20,7 +20,8 @@ export class ArticleComponent implements OnInit {
   }
 
   clicked() {
-    this.selected = !this.selected;
+    setTimeout(() => this.selected = !this.selected, 150);
+
   }
 
 }
