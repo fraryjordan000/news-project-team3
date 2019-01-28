@@ -27,12 +27,24 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-// TODO:figure out what is causing search to error
+
   search(str: string) {
-    this.fetch.search(str, (res) => {
+    if (str === '') {
+
+      let emp;
+      emp = 'empty';
+      this.fetch.search(emp, (res) => {
+        this.cards = res.articles;
+        console.log(res.articles);
+      });
+
+    } else {
+      this.fetch.search(str, (res) => {
       this.cards = res.articles;
       console.log(res.articles);
     });
+    }
+
   }
 
 
