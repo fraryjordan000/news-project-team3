@@ -5,7 +5,7 @@
     Search!
   </h1>
   <mat-form-field class="searchBar">
-    <input ngModel="query" type="search" matInput placeholder="Search Newsies">
+    <input [(ngModel)]="query" (keyup.enter)="search(query)" type="search" matInput placeholder="Search Newsies">
   </mat-form-field>
   <button type="submit" mat-flat-button color="primary" (click)="search(query)">Search
     <mat-icon>search</mat-icon>
