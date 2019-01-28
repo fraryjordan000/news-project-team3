@@ -24,6 +24,7 @@ export class HeadlinesComponent implements OnInit {
   }
 
   getCategory(str: string) {
+    this.contentRecieved = false;
     this.fetch.topHeadlines(str, (res) => {
       this.cards = [];
       for(let i = 0; i < res.articles.length; i++) {
@@ -35,7 +36,12 @@ export class HeadlinesComponent implements OnInit {
         };
         this.cards.push(tmp);
       }
-      this.contentRecieved = true;
+      this.auth.likesInArray(this.cards, (rs)=>{
+        for(let i of rs) {
+          this.cards[i].isLiked = true;
+        }
+        this.contentRecieved = true;
+      });
     });
   }
 

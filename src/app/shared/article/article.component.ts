@@ -19,6 +19,9 @@ export class ArticleComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    if(this.card.isLiked) {
+      this.selected = true;
+    }
   }
 
   clicked() {
