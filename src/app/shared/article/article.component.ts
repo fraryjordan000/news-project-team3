@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Article } from '../../article';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-article',
@@ -13,15 +14,30 @@ export class ArticleComponent implements OnInit {
   @Input() card: Article;
 
   selected: boolean = false;
+  processing: boolean = false;
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
 
   clicked() {
-    setTimeout(() => this.selected = !this.selected, 150);
-
+    if(!this.processing) {
+      this.processing = true;
+      setTimeout(() => {
+        this.selected = !this.selected;
+        if(this.selected) {
+          this.auth.addArticle(this.card, ()=>{
+            this.processing = false;
+          });
+        } else {
+          this.auth.removeArticle(this.card.url, ()=>{
+            this.processing = false;
+          });
+        }
+      }, 150);
+    }
+    
   }
 
 }

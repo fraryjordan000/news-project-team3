@@ -21,7 +21,6 @@ export class HeadlinesComponent implements OnInit {
   constructor(private fetch: ApiFetchService, private auth: AuthService) { }
 
   ngOnInit() {
-    this.auth.removeArticle("www.google.com");
   }
 
   getCategory(str: string) {

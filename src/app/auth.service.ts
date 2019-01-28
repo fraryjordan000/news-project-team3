@@ -106,15 +106,17 @@ export class AuthService {
     });
   }
 
-  addArticle(article: any) {
+  addArticle(article: any, cb: Function) {
     this.getArticles(res=>{
       let tmp = res;
+      
       tmp.push(article);
       this.updateArticles(tmp);
+      cb();
     });
   }
 
-  removeArticle(url: string) {
+  removeArticle(url: string, cb: Function) {
     this.getArticles(res=>{
       let tmp = res;
       for(let c in tmp) {
@@ -123,6 +125,21 @@ export class AuthService {
         }
       }
       this.updateArticles(tmp);
+      cb();
+    });
+  }
+
+  likesInArray(arr: any, cb: Function) {
+    this.getArticles(res=>{
+      let rtn = [];
+      for(let i in res) {
+        for(let j in arr) {
+          if(res[i].url == arr[j].url) {
+            rtn.push(j);
+          }
+        }
+      }
+      cb(rtn);
     });
   }
 
