@@ -5,18 +5,21 @@
 
     <mat-form-field appearance='outline'>
       <mat-label>Category</mat-label>
-      <mat-select>
-        <mat-option>World</mat-option>
-        <mat-option>Business</mat-option>
-        <mat-option>Technology</mat-option>
-        <mat-option>Entertainment</mat-option>
-        <mat-option>Sports</mat-option>
-        <mat-option>Science</mat-option>
-        <mat-option>Health</mat-option>
+      <mat-select (selectionChange)="onChange($event.value)">
+        <mat-option value="business">Business</mat-option>
+        <mat-option value="technology">Technology</mat-option>
+        <mat-option value="entertainment">Entertainment</mat-option>
+        <mat-option value="sports">Sports</mat-option>
+        <mat-option value="science">Science</mat-option>
+        <mat-option value="health">Health</mat-option>
       </mat-select>
     </mat-form-field>
 
     <!-- articles go below-->
+
+    <ng-container *ngIf="contentRecieved">
+      <app-article *ngFor="let c of cards" [card]="c"></app-article>
+    </ng-container>
 
   </div>
 </div>
