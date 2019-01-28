@@ -23,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {
   MatCardModule,
-  MatButtonModule
+  MatButtonModule,
+  MatTabsModule
 } from '@angular/material';
 import { ArticleComponent } from './shared/article/article.component';
 
@@ -55,7 +56,8 @@ import { ArticleComponent } from './shared/article/article.component';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
