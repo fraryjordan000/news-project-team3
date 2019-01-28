@@ -106,6 +106,26 @@ export class AuthService {
     });
   }
 
+  addArticle(article: any) {
+    this.getArticles(res=>{
+      let tmp = res;
+      tmp.push(article);
+      this.updateArticles(tmp);
+    });
+  }
+
+  removeArticle(url: string) {
+    this.getArticles(res=>{
+      let tmp = res;
+      for(let c in tmp) {
+        if(tmp[c].url == url) {
+          tmp.splice(c, 1);
+        }
+      }
+      this.updateArticles(tmp);
+    });
+  }
+
   private updateOverall(arr: any) {
     let hasRun: boolean = false;
 

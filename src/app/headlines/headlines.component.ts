@@ -3,6 +3,7 @@ import { ApiFetchService } from '../api-fetch.service';
 
 import { ArticleComponent } from '../shared/article/article.component';
 import { Article } from '../article';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-headlines',
@@ -17,9 +18,10 @@ export class HeadlinesComponent implements OnInit {
 
   contentRecieved: boolean = false;
 
-  constructor(private fetch: ApiFetchService) { }
+  constructor(private fetch: ApiFetchService, private auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.removeArticle("www.google.com");
   }
 
   getCategory(str: string) {
