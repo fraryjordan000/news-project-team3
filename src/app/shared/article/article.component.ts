@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { Article } from '../../article';
+
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -8,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class ArticleComponent implements OnInit {
 
-  @Input() card;
+  @Input() card: Article;
 
   selected: boolean = false;
 
@@ -18,7 +20,6 @@ export class ArticleComponent implements OnInit {
   }
 
   clicked() {
-
     this.selected = !this.selected;
   }
 
