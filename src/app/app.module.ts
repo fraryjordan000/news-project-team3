@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {
   MatCardModule,
-  MatButtonModule
+  MatButtonModule,
+  MatTabsModule
 } from '@angular/material';
 import { ArticleComponent } from './shared/article/article.component';
 
@@ -53,7 +55,9 @@ import { ArticleComponent } from './shared/article/article.component';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule,
+    MatTabsModule
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]

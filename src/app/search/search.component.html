@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <mat-card>
   <div class="spacer">
   </div>
@@ -5,14 +7,14 @@
     Search!
   </h1>
   <mat-form-field class="searchBar">
-    <input ngModel="query" type="search" matInput placeholder="Search Newsies">
+    <input [(ngModel)]="query" (keyup.enter)="search(query)" type="search" matInput placeholder="Search Newsies">
   </mat-form-field>
   <button type="submit" mat-flat-button color="primary" (click)="search(query)">Search
     <mat-icon>search</mat-icon>
   </button>
 </mat-card>
 
-<div class="container">
+<div class="container" *ngIf="contentRecieved">
   <app-article *ngFor="let c of cards" [card]="c"></app-article>
 </div>
 

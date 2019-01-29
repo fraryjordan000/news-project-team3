@@ -3,6 +3,7 @@ import { ApiFetchService } from '../api-fetch.service';
 
 import { ArticleComponent } from '../shared/article/article.component';
 import { Article } from '../article';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-headlines',
@@ -17,12 +18,13 @@ export class HeadlinesComponent implements OnInit {
 
   contentRecieved: boolean = false;
 
-  constructor(private fetch: ApiFetchService) { }
+  constructor(private fetch: ApiFetchService, private auth: AuthService) { }
 
   ngOnInit() {
   }
 
   getCategory(str: string) {
+    this.contentRecieved = false;
     this.fetch.topHeadlines(str, (res) => {
       this.cards = [];
       for(let i = 0; i < res.articles.length; i++) {
@@ -34,7 +36,12 @@ export class HeadlinesComponent implements OnInit {
         };
         this.cards.push(tmp);
       }
-      this.contentRecieved = true;
+      this.auth.likesInArray(this.cards, (rs)=>{
+        for(let i of rs) {
+          this.cards[i].isLiked = true;
+        }
+        this.contentRecieved = true;
+      });
     });
   }
 

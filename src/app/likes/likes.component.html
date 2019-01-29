@@ -1,3 +1,27 @@
-<p>
-  likes works!
-</p>
+<app-navbar></app-navbar>
+
+<mat-tab-group mat-align-tabs='center'>
+
+  <mat-tab label='Likes'>
+    <div class='container'>
+      <div class='articles' *ngIf="likesRecieved">
+
+        <!-- user's like go in here -->
+        <app-article *ngFor="let l of likes" [card]="l"></app-article>
+
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label='Most liked'>
+    <div class='container'>
+      <div class='articles' *ngIf="overallRecieved">
+
+        <!-- most liked go in here -->
+        <app-article *ngFor="let o of overall" [card]="o"></app-article>
+
+      </div>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>

@@ -2,5 +2,6 @@ export interface Article {
     title: string,
     description: string,
     urlToImage: string,
-    url: string
+    url: string,
+    isLiked?: boolean
 }
