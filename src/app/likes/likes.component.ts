@@ -50,7 +50,6 @@ export class LikesComponent implements OnInit {
   }
 
   sortOverall() {
-    console.log(this.overall);
     let passAgain = true;
     let rtn = this.overall;
     let changes = [];
@@ -75,7 +74,6 @@ export class LikesComponent implements OnInit {
 
     rtn.reverse();
     this.overall = rtn;
-    console.log(this.overall);
   }
 
 }
