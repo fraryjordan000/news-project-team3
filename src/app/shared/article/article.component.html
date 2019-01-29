@@ -17,11 +17,11 @@
 
   <!-- actions -->
 
-  <button color="primary" *ngIf='!selected' mat-icon-button class="heart" (click)='clicked()'>
-  <mat-icon color="accent">favorites</mat-icon>
+  <button [color]="" *ngIf='!selected' mat-icon-button class="heart pink" (click)='clicked()'>
+    <mat-icon class="grey">favorites</mat-icon>
 </button>
-  <button color="accent" *ngIf='selected' mat-icon-button class="heart" (click)='clicked()'>
-  <mat-icon color="primary">favorites</mat-icon>
+  <button *ngIf='selected' mat-icon-button class="heart grey" (click)='clicked()'>
+    <mat-icon class="pink">favorites</mat-icon>
 </button>
 
 

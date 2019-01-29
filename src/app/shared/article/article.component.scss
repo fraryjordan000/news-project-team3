@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 mat-card {
   padding: 24px;
   display: flex;
@@ -68,4 +70,12 @@ p {
   &:hover {
     color: black;
   }
+}
+
+.pink {
+  color: mat-color(mat-palette($mat-pink));
+}
+
+.grey {
+  color: mat-color(mat-palette($mat-gray));
 }
