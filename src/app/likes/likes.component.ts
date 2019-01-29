@@ -14,7 +14,7 @@ export class LikesComponent implements OnInit {
   likes: Article[] = [];
   likesRecieved: boolean = false;
 
-  overall: Article[] = [];
+  overall: any[] = [];
   overallRecieved: boolean = false;
 
   constructor(private auth: AuthService) { }
@@ -43,9 +43,39 @@ export class LikesComponent implements OnInit {
         for(let i of rs) {
           this.overall[i].isLiked = true;
         }
+        this.sortOverall();
         this.overallRecieved = true;
       });
     });
+  }
+
+  sortOverall() {
+    console.log(this.overall);
+    let passAgain = true;
+    let rtn = this.overall;
+    let changes = [];
+    while(passAgain) {
+        passAgain = false;
+        for(let i = 1; i < rtn.length; i++) {
+            let tmp = rtn[i - 1].count;
+            if(tmp > rtn[i].count){
+                passAgain = true;
+                changes.push(i);
+            }
+        }
+        if(passAgain){
+            for(let i = changes.length - 1; i >= 0; i--) {
+                let tmp = rtn[changes[i]];
+                rtn[changes[i]] = rtn[changes[i] - 1];
+                rtn[changes[i] - 1] = tmp;
+                changes.pop();
+            }
+        }
+    }
+
+    rtn.reverse();
+    this.overall = rtn;
+    console.log(this.overall);
   }
 
 }

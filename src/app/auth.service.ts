@@ -202,7 +202,7 @@ export class AuthService {
         let tmp = res.data().articles;
         for(let i in tmp) {
           if(tmp[i].url == url) {
-            if(tmp[i].count == 1) {
+            if(tmp[i].count <= 1) {
               tmp.splice(i, 1);
             } else {
               tmp[i].count--;
