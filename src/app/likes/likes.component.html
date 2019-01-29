@@ -5,7 +5,7 @@
       <div class='articles' *ngIf="likesRecieved">
 
         <!-- user's like go in here -->
-        <app-article *ngFor="let c of cards" [card]="c"></app-article>
+        <app-article *ngFor="let l of likes" [card]="l"></app-article>
 
       </div>
     </div>
@@ -13,9 +13,10 @@
 
   <mat-tab label='Most liked'>
     <div class='container'>
-      <div class='articles'>
+      <div class='articles' *ngIf="overallRecieved">
 
         <!-- most liked go in here -->
+        <app-article *ngFor="let o of overall" [card]="o"></app-article>
 
       </div>
     </div>
