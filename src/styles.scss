@@ -9,18 +9,60 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat-core();
-
+$news-tan: (
+  500: #dfc3a5,
+  700: #ad9376,
+  100: #fff6d6,
+  contrast: (
+    500: $dark-primary-text,
+    700: $dark-primary-text,
+    100: $dark-primary-text,
+  )
+);
+$news-green: (
+  500: #31786c,
+  700: #004c41,
+  100: #61a79a,
+  contrast: (
+    500: $light-primary-text,
+    700: $light-primary-text,
+    100: $dark-primary-text,
+  )
+);
+$news-brown: (
+  50: #b9a28b,
+  100: #b9a28b,
+  200: #b9a28b,
+  300: #b9a28b,
+  400: #89735e,
+  500: #89735e,
+  600: #89735e,
+  700: #5b4834,
+  contrast: (
+    500: $light-primary-text,
+    700: $light-primary-text,
+    100: $dark-primary-text,
+  )
+);
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $news-app-primary: mat-palette($mat-pink);
 $news-app-accent: mat-palette($mat-blue-gray, A200, A100, A400);
+$newspaper-light-primary: mat-palette($news-tan);
+$newspaper-light-accent: mat-palette($news-green);
 
 // The warn palette is optional (defaults to red).
 $news-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $news-app-theme: mat-dark-theme($news-app-primary, $news-app-accent, $news-app-warn);
+$newspaper-light-theme: mat-light-theme($newspaper-light-primary, $newspaper-light-accent, $news-app-warn);
+
+$newspaper-dark-primary: mat-palette($mat-brown);
+$newspaper-dark-accent: mat-palette($mat-gray);
+$newspaper-dark-theme: mat-dark-theme($newspaper-dark-primary, $newspaper-dark-accent, $news-app-warn);
+
 $desktop: 960px;
 $tablet: 768px;
 $mobile-large: 640px;
@@ -30,7 +72,7 @@ $mobile-small: 300px;
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($news-app-theme);
+@include angular-material-theme($newspaper-dark-theme);
 
 /* You can add global styles to this file, and also import other style files */
 html, body {
@@ -48,5 +90,7 @@ h1 {
 
 }
 
-
+//.news-dark-theme{
+//  @include angular-material-theme($dark-theme);
+//}
 
