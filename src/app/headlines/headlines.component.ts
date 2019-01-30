@@ -23,6 +23,7 @@ export class HeadlinesComponent implements OnInit {
   constructor(private fetch: ApiFetchService, private auth: AuthService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.getCategory('technology');
   }
 
   getCategory(str: string) {
