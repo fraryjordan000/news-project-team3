@@ -20,6 +20,7 @@ import {MatIconModule, MatInputModule, MatMenuModule, MatToolbarModule, MatSelec
 
 
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import {
   MatCardModule,
@@ -57,7 +58,8 @@ import { ArticleComponent } from './shared/article/article.component';
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
-    MatTabsModule
+    MatTabsModule,
+    NgxSpinnerModule
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]

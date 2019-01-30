@@ -25,15 +25,20 @@ export class ApiFetchService {
 
   private get(url: string, cb: Function) {
     let tmp: any;
+    let parent = this;
     this.http.get(url).subscribe(
       function(res) {
         tmp = res;
         if(cb != undefined) {
-          cb(res);
+          cb(parent.filterDuplicates(res));
         }
       }
     );
     return tmp;
+  }
+
+  private filterDuplicates(arr: any) {
+    return arr;
   }
 
 

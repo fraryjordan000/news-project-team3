@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiFetchService } from '../api-fetch.service';
 
 import { ArticleComponent } from '../shared/article/article.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Article } from '../article';
 import { AuthService } from '../auth.service';
 
@@ -18,7 +19,7 @@ export class SearchComponent implements OnInit {
 
   query: string = '';
 
-  constructor(private fetch: ApiFetchService, private auth: AuthService) { }
+  constructor(private fetch: ApiFetchService, private auth: AuthService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
   }
@@ -26,6 +27,7 @@ export class SearchComponent implements OnInit {
 
   search(str: string) {
     this.contentRecieved = false;
+    this.spinner.show();
     let searchstr: string;
     if (str === '') {
       searchstr = 'empty';
@@ -40,6 +42,7 @@ export class SearchComponent implements OnInit {
           this.cards[i].isLiked = true;
         }
         this.contentRecieved = true;
+        this.spinner.hide();
       });
     });
 

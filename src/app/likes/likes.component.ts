@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ArticleComponent } from '../shared/article/article.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Article } from '../article';
 import { AuthService } from '../auth.service';
 
@@ -17,21 +18,22 @@ export class LikesComponent implements OnInit {
   overall: any[] = [];
   overallRecieved: boolean = false;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.getLiked();
-    this.getOverall();
   }
 
   getLiked() {
     this.likesRecieved = false;
+    this.spinner.show();
     this.auth.getArticles(res=>{
       this.likes = res;
       for(let card of this.likes) {
         card.isLiked = true;
       }
       this.likesRecieved = true;
+      this.getOverall();
     });
   }
 
@@ -45,6 +47,7 @@ export class LikesComponent implements OnInit {
         }
         this.sortOverall();
         this.overallRecieved = true;
+        this.spinner.hide();
       });
     });
   }

@@ -14,6 +14,14 @@
   </button>
 </mat-card>
 
+<ngx-spinner
+      size = "medium"
+      color = "#fff"
+      type = "ball-spin-clockwise"
+      fullScreen = "false"
+    >
+  </ngx-spinner>
+
 <div class="container" *ngIf="contentRecieved">
   <app-article *ngFor="let c of cards" [card]="c"></app-article>
 </div>

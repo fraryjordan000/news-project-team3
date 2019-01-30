@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ApiFetchService } from '../api-fetch.service';
+import { AuthService } from '../auth.service';
 
 import { ArticleComponent } from '../shared/article/article.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Article } from '../article';
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-headlines',
@@ -18,13 +20,14 @@ export class HeadlinesComponent implements OnInit {
 
   contentRecieved: boolean = false;
 
-  constructor(private fetch: ApiFetchService, private auth: AuthService) { }
+  constructor(private fetch: ApiFetchService, private auth: AuthService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
   }
 
   getCategory(str: string) {
     this.contentRecieved = false;
+    this.spinner.show();
     this.fetch.topHeadlines(str, (res) => {
       this.cards = [];
       for(let i = 0; i < res.articles.length; i++) {
@@ -41,6 +44,7 @@ export class HeadlinesComponent implements OnInit {
           this.cards[i].isLiked = true;
         }
         this.contentRecieved = true;
+        this.spinner.hide();
       });
     });
   }
