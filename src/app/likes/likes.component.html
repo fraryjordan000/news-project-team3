@@ -15,6 +15,13 @@
 
   <mat-tab label='Most liked'>
     <div class='container'>
+        <ngx-spinner
+        size = "medium"
+        color = "#fff"
+        type = "ball-spin-clockwise"
+        fullScreen = "false"
+        >
+      </ngx-spinner>
       <div class='articles' *ngIf="overallRecieved">
 
         <!-- most liked go in here -->
