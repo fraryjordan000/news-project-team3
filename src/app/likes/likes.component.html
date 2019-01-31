@@ -11,18 +11,25 @@
 
       </div>
     </div>
+    <div class="container" *ngIf="likes.length == 0">
+      <div class="articles center">
+        <h3>Looks like you haven't liked anything.</h3>
+        <p>Wanna try liking something?</p>
+        <button mat-flat-button color="accent" routerLink="/headlines">Go!</button>
+      </div>
+    </div>
   </mat-tab>
 
   <mat-tab label='Most liked'>
     <div class='container'>
-        <ngx-spinner
-        size = "medium"
-        color = "#fff"
-        type = "ball-spin-clockwise"
-        fullScreen = "false"
-        >
+      <ngx-spinner
+        size="medium"
+        color="#fff"
+        type="ball-spin-clockwise"
+        fullScreen="false"
+      >
 
-      <p style="color: white" > If it doesn't load, refresh the page</p>
+        <p style="color: white"> If it doesn't load, refresh the page</p>
       </ngx-spinner>
       <div class='articles' *ngIf="overallRecieved">
 
