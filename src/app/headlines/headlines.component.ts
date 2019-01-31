@@ -40,6 +40,7 @@ export class HeadlinesComponent implements OnInit {
         };
         this.cards.push(tmp);
       }
+      this.cards = this.filterDupes(this.cards);
       this.auth.likesInArray(this.cards, (rs)=>{
         for(let i of rs) {
           this.cards[i].isLiked = true;
@@ -52,6 +53,21 @@ export class HeadlinesComponent implements OnInit {
 
   onChange(str: string) {
     this.getCategory(str);
+  }
+
+  filterDupes(arr: any[]) {
+    let rtn: any;
+    for(let i in arr) {
+      for(let j in arr) {
+        if(typeof(arr[i]) != "undefined" && typeof(arr[j]) != "undefined") {
+          if(arr[i].url == arr[j].url && i != j) {
+            arr[j] = undefined;
+          }
+        }
+      }
+    }
+    rtn = arr.filter(article => article != undefined);
+    return rtn;
   }
 
 }
