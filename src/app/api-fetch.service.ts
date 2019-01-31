@@ -12,7 +12,7 @@ export class ApiFetchService {
   private searchStart: string = 'https://newsapi.org/v2/everything?q=';
   private searchEnd: string = '&apiKey=c3bb2f311334412fa4f71520d1f62e0e';
 
-  private headlinesStart: string = 'https://newsapi.org/v2/top-headlines?category=';
+  private headlinesStart: string = 'https://newsapi.org/v2/top-headlines?country=us&category=';
   private headlinesEnd: string = '&apiKey=c3bb2f311334412fa4f71520d1f62e0e';
 
   search(str: string, cb: Function) {
