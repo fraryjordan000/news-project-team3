@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
@@ -28,7 +28,8 @@ export class AuthService {
 
   constructor(public afAuth: AngularFireAuth,
               private afs: AngularFirestore,
-              private router: Router) {
+              private router: Router,
+              private ngZone: NgZone) {
                 
                 this.user = this.afAuth.authState.pipe(switchMap(user => {
                   if(user) {
@@ -53,7 +54,6 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
-        this.router.navigate(['/headlines']);
       });
   }
 
@@ -72,11 +72,15 @@ export class AuthService {
           articles: []
         };
 
-        hasRun = true;
+        this.ngZone.run(()=>{
+          this.router.navigate(['/headlines']);
+          hasRun = true;
+        });
     
         return userRef.set(data);
       }
     });
+    location.reload();
   }
 
   updateArticles(arr: any) {
