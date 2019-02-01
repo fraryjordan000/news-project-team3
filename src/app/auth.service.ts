@@ -9,12 +9,14 @@ import { switchMap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Article } from './article';
+import { htmlAstToRender3Ast } from '@angular/compiler/src/render3/r3_template_transform';
 
 interface User {
   uid: string;
   email: string;
-  displayName: string;
   articles: any;
+  displayName: string;
+  photoURL?: string
 }
 
 @Injectable({
@@ -60,13 +62,17 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
     userRef.get().subscribe(res=>{
-      if(res.data().articles == undefined && !hasRun) {
+      if(res.data() == undefined && !hasRun) {
+        // if(typeof(res.data().articles) == 'undefined') {}
         const data: User = {
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
+          photoURL: user.photoURL,
           articles: []
         };
+
+        hasRun = true;
     
         return userRef.set(data);
       }
@@ -122,15 +128,32 @@ export class AuthService {
     });
   }
 
-  addArticle(article: any, cb: Function) {
+  addArticle(article: Article, cb: Function) {
     this.getArticles(res=>{
-      let tmp = res;
-      
-      tmp.push(article);
-      this.updateArticles(tmp);
       this.addToOverall(article, ()=>{
         cb();
       });
+
+      function genTempArticle(art: Article) {
+        let rtn: Article = {
+          url: art.url,
+          urlToImage: art.urlToImage,
+          title: art.title,
+          description: art.description
+        }
+        return rtn;
+      }
+
+      let tmpArticle: Article = genTempArticle(article);
+
+      if(typeof(tmpArticle.count) != "undefined") {
+        delete tmpArticle.count;
+      }
+      
+      let tmp = res;
+      
+      tmp.push(tmpArticle);
+      this.updateArticles(tmp);
     });
   }
 

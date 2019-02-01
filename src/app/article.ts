@@ -1,7 +1,8 @@
 export interface Article {
-    title: string,
-    description: string,
-    urlToImage: string,
-    url: string,
-    isLiked?: boolean
+    title: string;
+    description: string;
+    urlToImage: string;
+    url: string;
+    isLiked?: boolean;
+    count?: number;
 }

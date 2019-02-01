@@ -13,6 +13,7 @@
   <div class='info-container'>
     <h2><a [href]="card.url" target="_blank">{{card.title}}</a></h2>
     <p>{{card.description}}</p>
+    <span *ngIf="card.count">Likes: {{card.count}}</span>
   </div>
 
   <!-- actions -->

@@ -30,17 +30,22 @@ export class ArticleComponent implements OnInit {
       setTimeout(() => {
         this.selected = !this.selected;
         if(this.selected) {
+          if(typeof(this.card.count) != "undefined") {
+            this.card.count++;
+          }
           this.auth.addArticle(this.card, ()=>{
             this.processing = false;
           });
         } else {
+          if(typeof(this.card.count) != "undefined") {
+            this.card.count--;
+          }
           this.auth.removeArticle(this.card.url, ()=>{
             this.processing = false;
           });
         }
       }, 150);
     }
-    
   }
 
 }

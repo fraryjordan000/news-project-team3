@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "dist/newsProject",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+<<<<<<< HEAD
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+=======
+>>>>>>> b9b2b7f015abe64fd94875cc7bd1850d561643ac
+    ]
+  }
+}
