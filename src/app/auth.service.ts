@@ -13,8 +13,9 @@ import { Article } from './article';
 interface User {
   uid: string;
   email: string;
-  displayName: string;
   articles: any;
+  displayName: string;
+  photoURL?: string
 }
 
 @Injectable({
@@ -65,6 +66,7 @@ export class AuthService {
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
+          photoURL: user.photoURL,
           articles: []
         };
     
@@ -124,17 +126,30 @@ export class AuthService {
 
   addArticle(article: Article, cb: Function) {
     this.getArticles(res=>{
-      let tmp = res;
-
-      if(typeof(article.count) != "undefined") {
-        delete article.count;
-      }
-      
-      tmp.push(article);
-      this.updateArticles(tmp);
       this.addToOverall(article, ()=>{
         cb();
       });
+
+      function genTempArticle(art: Article) {
+        let rtn: Article = {
+          url: art.url,
+          urlToImage: art.urlToImage,
+          title: art.title,
+          description: art.description
+        }
+        return rtn;
+      }
+
+      let tmpArticle: Article = genTempArticle(article);
+
+      if(typeof(tmpArticle.count) != "undefined") {
+        delete tmpArticle.count;
+      }
+      
+      let tmp = res;
+      
+      tmp.push(tmpArticle);
+      this.updateArticles(tmp);
     });
   }
 
