@@ -4,7 +4,7 @@
   flex: 1 1 auto;
 }
 
-mat-toolbar {
+::ng-deep mat-toolbar {
   @supports (position: sticky) or (position: -webkit-sticky) {
     position: -webkit-sticky;
     position: sticky;
