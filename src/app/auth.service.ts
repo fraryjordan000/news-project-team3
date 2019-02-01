@@ -63,19 +63,18 @@ export class AuthService {
 
     userRef.get().subscribe(res=>{
       if(res.data() == undefined && !hasRun) {
-        if(typeof(res.data().articles) == 'undefined') {
-          const data: User = {
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-            articles: []
-          };
-  
-          hasRun = true;
-      
-          return userRef.set(data);
-        }
+        // if(typeof(res.data().articles) == 'undefined') {}
+        const data: User = {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          articles: []
+        };
+
+        hasRun = true;
+    
+        return userRef.set(data);
       }
     });
   }
