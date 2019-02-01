@@ -62,7 +62,7 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
     userRef.get().subscribe(res=>{
-      if(typeof(res.data().articles) == 'undefined' && !hasRun) {
+      if((typeof(res.data().articles) == 'undefined' && !hasRun) || (res.data() == undefined)) {
         const data: User = {
           uid: user.uid,
           email: user.email,
