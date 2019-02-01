@@ -122,9 +122,13 @@ export class AuthService {
     });
   }
 
-  addArticle(article: any, cb: Function) {
+  addArticle(article: Article, cb: Function) {
     this.getArticles(res=>{
       let tmp = res;
+
+      if(typeof(article.count) != "undefined") {
+        delete article.count;
+      }
       
       tmp.push(article);
       this.updateArticles(tmp);
