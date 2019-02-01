@@ -4,7 +4,7 @@
   flex: 1 1 auto;
 }
 
-mat-toolbar {
+::ng-deep mat-toolbar {
   @supports (position: sticky) or (position: -webkit-sticky) {
     position: -webkit-sticky;
     position: sticky;
@@ -12,8 +12,17 @@ mat-toolbar {
     z-index: 1020;
   }
 
+  mat-toolbar {
+    margin-bottom: 5px;
+  }
+
   .padding-right{
     padding-right: 10px;
   }
 
+}
+
+.header-image {
+
+  background-size: cover;
 }

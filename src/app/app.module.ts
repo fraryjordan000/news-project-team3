@@ -60,7 +60,7 @@ import { ArticleComponent } from './shared/article/article.component';
     MatSelectModule,
     FormsModule,
     MatTabsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
