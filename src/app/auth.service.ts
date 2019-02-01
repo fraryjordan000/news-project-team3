@@ -80,6 +80,7 @@ export class AuthService {
         return userRef.set(data);
       }
     });
+    location.reload();
   }
 
   updateArticles(arr: any) {
