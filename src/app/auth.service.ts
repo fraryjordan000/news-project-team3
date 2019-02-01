@@ -9,6 +9,7 @@ import { switchMap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Article } from './article';
+import { htmlAstToRender3Ast } from '@angular/compiler/src/render3/r3_template_transform';
 
 interface User {
   uid: string;
@@ -61,7 +62,7 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
     userRef.get().subscribe(res=>{
-      if(res.data().articles == undefined && !hasRun) {
+      if(typeof(res.data().articles) == 'undefined' && !hasRun) {
         const data: User = {
           uid: user.uid,
           email: user.email,
@@ -69,6 +70,8 @@ export class AuthService {
           photoURL: user.photoURL,
           articles: []
         };
+
+        hasRun = true;
     
         return userRef.set(data);
       }
