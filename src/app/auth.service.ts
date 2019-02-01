@@ -4,19 +4,19 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take, map, tap } from 'rxjs/operators';
 
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Article } from './article';
-import { htmlAstToRender3Ast } from '@angular/compiler/src/render3/r3_template_transform';
+import { AuthGuard } from './auth.guard';
 
 interface User {
   uid: string;
   email: string;
   articles: any;
   displayName: string;
-  photoURL?: string
+  photoURL: string
 }
 
 @Injectable({
@@ -47,6 +47,7 @@ export class AuthService {
 
   logOut() {
     this.afAuth.auth.signOut();
+    location.reload();
     return true;
   }
 
@@ -54,6 +55,9 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
+        this.ngZone.run(()=>{
+          this.router.navigate(['/headlines']);
+        });
       });
   }
 
@@ -72,15 +76,11 @@ export class AuthService {
           articles: []
         };
 
-        this.ngZone.run(()=>{
-          this.router.navigate(['/headlines']);
-          hasRun = true;
-        });
+        hasRun = true;
     
         return userRef.set(data);
       }
     });
-    location.reload();
   }
 
   updateArticles(arr: any) {
@@ -94,7 +94,8 @@ export class AuthService {
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
-          articles: arr
+          articles: arr,
+          photoURL: user.photoURL
         }
 
         articlesRef.set(data);

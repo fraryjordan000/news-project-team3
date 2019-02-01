@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthGuard } from '../auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public auth: AuthService, private router: Router) { }
+  constructor(public auth: AuthService, private router: Router, private guard: AuthGuard) { }
 
   ngOnInit() {
     this.redirect();
