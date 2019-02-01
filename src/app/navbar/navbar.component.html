@@ -20,15 +20,25 @@
   <span class="padding-right">Newsies</span>
   <img src="../../assets/hat.svg" width="50" height="50" alt="Newsboy Hat">
   <span class="fill-remaining-space"></span>
-  <div *ngIf="icon">
+  <div *ngIf="!icon">
     <span class="padding-right" *ngIf="auth.user | async as user">Hello, {{ user.displayName }}</span>
     <button mat-raised-button aria-label="Log out" color="accent" *ngIf="auth.user | async as user" (click)="logout()">
-      Log out
+      Log Out?
     </button>
   </div>
 
-  <div *ngIf="!icon">
+  <div *ngIf="icon">
+    <button mat-icon-button [matMenuTriggerFor]="signOut" aria-label="Sign out Menu">
+      <img mat-card-avatar class="header-image" *ngIf="auth.user | async as user" src="{{user.photoURL}}"
+           alt="User Photo">
+    </button>
 
+    <mat-menu #signOut=matMenu>
+      <button mat-menu-item *ngIf="auth.user | async as user" (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Log Out?</span>
+      </button>
+    </mat-menu>
   </div>
 
 

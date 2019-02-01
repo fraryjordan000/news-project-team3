@@ -12,8 +12,17 @@
     z-index: 1020;
   }
 
+  mat-toolbar {
+    margin-bottom: 5px;
+  }
+
   .padding-right{
     padding-right: 10px;
   }
 
+}
+
+.header-image {
+
+  background-size: cover;
 }
