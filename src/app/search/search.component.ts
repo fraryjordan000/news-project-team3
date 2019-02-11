@@ -4,7 +4,7 @@ import { ApiFetchService } from '../api-fetch.service';
 import { ArticleComponent } from '../shared/article/article.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Article } from '../article';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth_articles.service';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
 
   // In html, *ngFor="let card in cards" -- use card.title, card.description, card.url, and card.urlToImage
   cards: Article[] = [];
-  contentRecieved: boolean = false;
+  contentReceived: boolean = false;
 
   query: string = '';
 
@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
 
 
   search(str: string) {
-    this.contentRecieved = false;
+    this.contentReceived = false;
     this.spinner.show();
     let searchstr: string;
     if (str === '') {
@@ -41,7 +41,7 @@ export class SearchComponent implements OnInit {
         for(let i of rs) {
           this.cards[i].isLiked = true;
         }
-        this.contentRecieved = true;
+        this.contentReceived = true;
         this.spinner.hide();
       });
     });
