@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.breakpointobserver
-      .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
+      .observe(Breakpoints.HandsetPortrait)
       .subscribe((state: BreakpointState) => {
         this.icon = state.matches;
 
