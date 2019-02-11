@@ -16,14 +16,10 @@
     <span *ngIf="card.count">Likes: {{card.count}}</span>
   </div>
 
-  <!-- actions -->
+  <!-- like btn -->
 
-  <button [color]="" *ngIf='!selected' mat-icon-button class="heart pink" (click)='clicked()'>
-    <mat-icon class="grey">favorites</mat-icon>
-</button>
-  <button *ngIf='selected' mat-icon-button class="heart grey" (click)='clicked()'>
-    <mat-icon class="pink">favorites</mat-icon>
-</button>
-
+  <button mat-icon-button class='heart' (click)='clicked()'>
+    <mat-icon [ngClass]='{pink: selected}'>favorites</mat-icon>
+  </button>
 
 </mat-card>

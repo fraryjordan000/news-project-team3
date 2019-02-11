@@ -35,16 +35,6 @@ a {
 
 }
 
-.heart {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-
-  &:hover {
-    color: tomato;
-  }
-}
-
 // type (maybe make global later)
 
 h2 {
@@ -64,18 +54,21 @@ p {
 
 }
 
-.selected {
-  color: red;
+// like btn
 
-  &:hover {
-    color: black;
-  }
+.heart {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+}
+
+mat-icon {
+  color: mat-color(mat-palette($mat-gray));
+
 }
 
 .pink {
   color: mat-color(mat-palette($mat-pink));
-}
 
-.grey {
-  color: mat-color(mat-palette($mat-gray));
 }
