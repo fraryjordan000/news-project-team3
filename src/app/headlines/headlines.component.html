@@ -28,7 +28,7 @@
     <p style="color: white" > If it doesn't load, refresh the page</p>
     </ngx-spinner>
 
-    <ng-container *ngIf="contentRecieved">
+    <ng-container *ngIf="contentReceived">
       <app-article *ngFor="let c of cards" [card]="c"></app-article>
     </ng-container>
 
