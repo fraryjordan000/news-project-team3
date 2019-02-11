@@ -9,7 +9,6 @@ import { switchMap, take, map, tap } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Article } from './article';
-import { AuthGuard } from './auth.guard';
 
 interface User {
   uid: string;
@@ -23,14 +22,14 @@ interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   user: Observable<User>;
 
   constructor(public afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router,
               private ngZone: NgZone) {
-                
+
                 this.user = this.afAuth.authState.pipe(switchMap(user => {
                   if(user) {
                     return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -39,7 +38,7 @@ export class AuthService {
                   }
                 }));
   }
-  
+
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
@@ -77,7 +76,7 @@ export class AuthService {
         };
 
         hasRun = true;
-    
+
         return userRef.set(data);
       }
     });
@@ -96,7 +95,7 @@ export class AuthService {
           displayName: user.displayName,
           articles: arr,
           photoURL: user.photoURL
-        }
+        };
 
         articlesRef.set(data);
         hasRun = true;
@@ -145,7 +144,7 @@ export class AuthService {
           urlToImage: art.urlToImage,
           title: art.title,
           description: art.description
-        }
+        };
         return rtn;
       }
 
@@ -154,9 +153,9 @@ export class AuthService {
       if(typeof(tmpArticle.count) != "undefined") {
         delete tmpArticle.count;
       }
-      
+
       let tmp = res;
-      
+
       tmp.push(tmpArticle);
       this.updateArticles(tmp);
     });
@@ -194,7 +193,7 @@ export class AuthService {
   private addToOverall(article: any, cb: Function) {
     let hasRun: boolean = false;
     const overallRef: AngularFirestoreDocument<any> = this.afs.doc('overall/data');
-        
+
     overallRef.get().subscribe(res=>{
       let tmp = res.data().articles;
       let found = false;
