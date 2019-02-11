@@ -13,10 +13,10 @@ import { AuthService } from '../auth.service';
 export class LikesComponent implements OnInit {
 
   likes: Article[] = [];
-  likesRecieved: boolean = false;
+  likesReceived: boolean = false;
 
   overall: any[] = [];
-  overallRecieved: boolean = false;
+  overallReceived: boolean = false;
 
   constructor(private auth: AuthService, private spinner: NgxSpinnerService) { }
 
@@ -25,20 +25,20 @@ export class LikesComponent implements OnInit {
   }
 
   getLiked() {
-    this.likesRecieved = false;
+    this.likesReceived = false;
     this.spinner.show();
     this.auth.getArticles(res=>{
       this.likes = res;
       for(let card of this.likes) {
         card.isLiked = true;
       }
-      this.likesRecieved = true;
+      this.likesReceived = true;
       this.getOverall();
     });
   }
 
   getOverall() {
-    this.overallRecieved = false;
+    this.overallReceived = false;
     this.auth.getOverall(res=>{
       this.overall = res;
       this.auth.likesInArray(this.overall, rs=>{
@@ -46,7 +46,7 @@ export class LikesComponent implements OnInit {
           this.overall[i].isLiked = true;
         }
         this.sortOverall();
-        this.overallRecieved = true;
+        this.overallReceived = true;
         this.spinner.hide();
       });
     });

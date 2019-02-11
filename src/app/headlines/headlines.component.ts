@@ -18,7 +18,7 @@ export class HeadlinesComponent implements OnInit {
   cards: Article[] = [];
   currentCategory: string = 'business';
 
-  contentRecieved: boolean = false;
+  contentReceived: boolean = false;
 
   constructor(private fetch: ApiFetchService, private auth: AuthService, private spinner: NgxSpinnerService) { }
 
@@ -27,7 +27,7 @@ export class HeadlinesComponent implements OnInit {
   }
 
   getCategory(str: string) {
-    this.contentRecieved = false;
+    this.contentReceived = false;
     this.spinner.show();
     this.fetch.topHeadlines(str, (res) => {
       this.cards = [];
@@ -45,7 +45,7 @@ export class HeadlinesComponent implements OnInit {
         for(let i of rs) {
           this.cards[i].isLiked = true;
         }
-        this.contentRecieved = true;
+        this.contentReceived = true;
         this.spinner.hide();
       });
     });
