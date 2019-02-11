@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiFetchService {
 
   constructor(private http: HttpClient) {}
-  
+
   private searchStart: string = 'https://newsapi.org/v2/everything?q=';
   private searchEnd: string = '&apiKey=c3bb2f311334412fa4f71520d1f62e0e';
 
@@ -30,14 +30,14 @@ export class ApiFetchService {
       function(res) {
         tmp = res;
         if(cb != undefined) {
-          cb(parent.filterDuplicates(res));
+          cb(ApiFetchService.filterDuplicates(res));
         }
       }
     );
     return tmp;
   }
 
-  private filterDuplicates(arr: any) {
+  private static filterDuplicates(arr: any) {
     return arr;
   }
 
