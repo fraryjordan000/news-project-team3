@@ -4,7 +4,7 @@ import { ApiFetchService } from '../api-fetch.service';
 import { ArticleComponent } from '../shared/article/article.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Article } from '../article';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth_articles.service';
 
 @Component({
   selector: 'app-search',

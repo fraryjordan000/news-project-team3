@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Article } from '../../article';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/auth_articles.service';
 
 @Component({
   selector: 'app-article',
