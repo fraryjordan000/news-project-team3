@@ -22,6 +22,7 @@ export class LikesComponent implements OnInit {
 
   ngOnInit() {
     this.getLiked();
+    this.getOverall();
   }
 
   getLiked() {
@@ -33,7 +34,6 @@ export class LikesComponent implements OnInit {
         card.isLiked = true;
       }
       this.likesReceived = true;
-      this.getOverall();
     });
   }
 
